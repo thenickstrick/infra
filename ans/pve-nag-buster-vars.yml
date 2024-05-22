@@ -1,0 +1,4 @@
+---
+nagtoken: "data.status.toLowerCase() !== 'active'"
+nagfile: "/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js"
+paid_base: "/etc/apt/sources.list.d/pve-enterprise"

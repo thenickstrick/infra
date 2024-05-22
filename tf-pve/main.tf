@@ -8,7 +8,8 @@ terraform {
 }
 
 provider "proxmox" {
-  # Configuration options
+  pm_api_url = "https://virt1.thenickstrick.lan:8006/api2/json"
+
 }
 
 resource "proxmox_vm_qemu" "resource-name" {

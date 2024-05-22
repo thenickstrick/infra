@@ -1,0 +1,25 @@
+---
+- name: Proxmox VE Terraform Setup
+  hosts: pve
+  vars:
+    pve_user: terraform-prov@pve
+    pve_password: your_password_here
+    pve_role_name: TerraformProv
+    pve_privileges: "Datastore.AllocateSpace Datastore.Audit Pool.Allocate Sys.Audit Sys.Console Sys.Modify VM.Allocate VM.Audit VM.Clone VM.Config.CDROM VM.Config.Cloudinit VM.Config.CPU VM.Config.Disk VM.Config.HWType VM.Config.Memory VM.Config.Network VM.Config.Options VM.Migrate VM.Monitor VM.PowerMgmt SDN.Use"
+
+  tasks:
+    - name: Add role to Proxmox VE
+      shell: pveum role add {{ pve_role_name }} -privs "{{ pve_privileges }}"
+      register: role_add_result
+
+    - name: Add user to Proxmox VE
+      shell: pveum user add {{ pve_user }} --password {{ pve_password }}
+      register: user_add_result
+
+    - name: Assign role to user in Proxmox VE
+      shell: pveum aclmod / -user {{ pve_user }} -role {{ pve_role_name }}
+      register: aclmod_result
+
+    - name: Modify role privileges in Proxmox VE
+      shell: pveum role modify {{ pve_role_name }} -privs "{{ pve_privileges }}"
+      register: role_modify_result
