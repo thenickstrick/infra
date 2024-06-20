@@ -1,5 +1,3 @@
----
-
 version: '3.8'
 
 services:
@@ -24,8 +22,8 @@ services:
       - DOCKER_MODS=linuxserver/mods:universal-calibre #optional
         #- OAUTHLIB_RELAX_TOKEN_SCOPE=1 #optional
     volumes:
-      - ./config:/config
-      - ./books:/books
+      - ./calibre-web/config:/config
+      - ./calibre-web/books:/books
     restart: unless-stopped
     ports:
       - 8083:8083
@@ -36,6 +34,22 @@ services:
       - "traefik.http.routers.calibre-web.tls=true"
       - "traefik.http.routers.calibre-web.service=calibre-web"
       - "traefik.http.services.calibre-web.loadbalancer.server.port=8083"
+    networks:
+      - proxy
+
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    volumes:
+      - ./heimdall/config:/config
+    ports:
+      - 8080:80
+      - 8443:443
+    restart: unless-stopped
     networks:
       - proxy
 
@@ -89,4 +103,3 @@ networks:
 secrets:
   cf_api_token:
     file: ./traefik/cf_api_token.txt
-

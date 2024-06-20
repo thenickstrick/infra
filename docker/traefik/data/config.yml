@@ -1,0 +1,165 @@
+http:
+ #region routers 
+  routers:
+
+    budget:
+      entryPoints:
+        - "https"
+      rule: "Host(`budget.lan.thenickstrick.com`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: budget
+
+    calibre-web:
+      entryPoints:
+        - "https"
+      rule: "Host(`books.lan.thenickstrick.com`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: calibre-web
+
+    heimdall:
+      entryPoints:
+        - "https"
+      rule: "Host(`home.lan.thenickstrick.com`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: heimdall
+
+    virt1:
+      entryPoints:
+        - "https"
+      rule: "Host(`virt1.lan.thenickstrick.com`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: virt1
+
+    virt2:
+      entryPoints:
+        - "https"
+      rule: "Host(`virt2.lan.thenickstrick.com`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: virt2
+
+    virt3:
+      entryPoints:
+        - "https"
+      rule: "Host(`virt3.lan.thenickstrick.com`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: virt3
+
+    yennefer:
+      entryPoints:
+        - "https"
+      rule: "Host(`yennefer.lan.thenickstrick.com`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: yennefer
+
+    geralt:
+      entryPoints:
+        - "https"
+      rule: "Host(`geralt.lan.thenickstrick.com`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: geralt
+  
+#endregion
+#region services
+  services:
+    
+    budget:
+      loadBalancer:
+        servers:
+          - url: "https://10.1.1.10:5006"
+        passHostHeader: true
+
+    calibre-web:
+      loadBalancer:
+        servers:
+          - url: "http://10.1.1.10:8083"
+        passHostHeader: true
+
+    heimdall:
+      loadBalancer:
+        servers:
+          - url: "https://10.1.1.10:8443"
+        passHostHeader: true
+
+    virt1:
+      loadBalancer:
+        servers:
+          - url: "https://10.1.1.101:8006"
+        passHostHeader: true
+
+    virt2:
+      loadBalancer:
+        servers:
+          - url: "https://10.1.1.102:8006"
+        passHostHeader: true
+
+    virt3:
+      loadBalancer:
+        servers:
+          - url: "https://10.1.1.103:8006"
+        passHostHeader: true
+
+    yennefer:
+      loadBalancer:
+        servers:
+          - url: "https://10.1.1.250:8006"
+        passHostHeader: true
+
+    geralt:
+      loadBalancer:
+        servers:
+          - url: "https://10.1.1.251:8006"
+        passHostHeader: true
+
+#endregion
+  middlewares:
+    https-redirectscheme:
+      redirectScheme:
+        scheme: https
+        permanent: true
+    default-headers:
+      headers:
+        frameDeny: true
+        browserXssFilter: true
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 15552000
+        customFrameOptionsValue: SAMEORIGIN
+        customRequestHeaders:
+          X-Forwarded-Proto: https
+
+    default-whitelist:
+      ipAllowList:
+        sourceRange:
+        - "10.1.1.0/24"
+
+    secured:
+      chain:
+        middlewares:
+        - default-whitelist
+        - default-headers

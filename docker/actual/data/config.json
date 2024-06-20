@@ -1,0 +1,6 @@
+{
+    "https": {
+      "key": "/data/budget.key",
+      "cert": "/data/budget.crt"
+    }
+}
