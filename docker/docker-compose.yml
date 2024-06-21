@@ -122,6 +122,8 @@ services:
       - ./traefik/data/traefik.yml:/traefik.yml:ro
       - ./traefik/data/acme.json:/acme.json
       - ./traefik/data/config.yml:/config.yml:ro
+      - ./traefik/logs/traefik.log:/logs/traefik.log
+      - ./traefik/logs/access.log:/logs/access.log
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.entrypoints=http"

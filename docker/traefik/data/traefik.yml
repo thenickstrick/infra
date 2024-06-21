@@ -19,6 +19,17 @@ providers:
     exposedByDefault: false
   file:
     filename: /config.yml
+logs:
+  compress: true
+  filePath: "/logs/traefik.log"
+  format: json
+  level: DEBUG
+
+accessLog:
+  addInternals: true
+  filePath: "/logs/access.log"
+  format: json
+  
 certificatesResolvers:
   cloudflare:
     acme:
