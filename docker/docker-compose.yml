@@ -42,7 +42,7 @@ services:
     image: lissy93/dashy
     container_name: dashy
     volumes:
-      - ./app/user-data/conf.yml:/app/user-data/conf.yml
+      - ./dashy/app/user-data/conf.yml:/app/user-data/conf.yml
     ports:
       - 4000:8080
     # Set any environmental variables
@@ -76,6 +76,17 @@ services:
     restart: unless-stopped
     networks:
       - proxy
+
+  homer:
+    image: b4bz/homer
+    container_name: homer
+    volumes:
+      - ./homer/www/assets/:/www/assets
+    ports:
+      - 8081:8080
+    user: 1000:1000 # default
+    environment:
+      - INIT_ASSETS=1 # default
 
   traefik:
     container_name: traefik
