@@ -19,7 +19,7 @@ providers:
     exposedByDefault: false
   file:
     filename: /config.yml
-logs:
+log:
   compress: true
   filePath: "/logs/traefik.log"
   format: json
