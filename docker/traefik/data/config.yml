@@ -22,6 +22,16 @@ http:
       tls: {}
       service: calibre-web
 
+    nexus-dozzle:
+      entryPoints:
+        - "https"
+      rule: "Host(`nexus-dozzle.lan.thenickstrick.com`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: nexus-dozzle
+
     heimdall:
       entryPoints:
         - "https"
@@ -96,6 +106,12 @@ http:
       loadBalancer:
         servers:
           - url: "http://10.1.1.10:8083"
+        passHostHeader: true
+
+    nexus-dozzle:
+      loadBalancer:
+        servers:
+          - url: "http://10.1.1.10:8888"
         passHostHeader: true
 
     heimdall:
