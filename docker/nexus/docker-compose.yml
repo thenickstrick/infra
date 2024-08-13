@@ -1,6 +1,4 @@
 ---
-version: '3.8'
-
 services:
   actual_server:
     container_name: budget
@@ -96,6 +94,21 @@ services:
     user: 1000:1000 # default
     environment:
       - INIT_ASSETS=1 # default
+    restart: unless-stopped
+
+  smokeping:
+    image: lscr.io/linuxserver/smokeping:latest
+    container_name: smokeping
+    hostname: nexus
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    volumes:
+      - ./smokeping/config:/config
+      - ./smokeping/data:/data
+    ports:
+      - 8082:80
     restart: unless-stopped
 
   traefik:
