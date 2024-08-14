@@ -125,6 +125,16 @@ menu = Cloudflare DNS 2
 title = Cloudflare DNS 1.0.0.1
 host = 1.0.0.1
 
+++ CloudflareAM-DNS1
+menu = Cloudflare Anti Malware 1
+title = Cloudflare Anti Malware DNS 1.1.1.2
+host = 1.1.1.2
+
+++ CloudflareAM-DNS2
+menu = Cloudflare Anti Malware 2
+title = Cloudflare Anti Malware DNS 1.0.0.2
+host = 1.0.0.2
+
 ++ Quad9-DNS1
 menu = Quad9 DNS 2
 title = Quad9 DNS 9.9.9.9
