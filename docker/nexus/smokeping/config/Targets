@@ -1,0 +1,181 @@
+*** Targets ***
+
+probe = FPing
+
+menu = Top
+title = Network Latency Grapher
+remark = Welcome to the SmokePing website of WORKS Company. \
+         Here you will learn all about the latency of our network.
+
++ InternetSites
+
+menu = Internet Sites
+title = Internet Sites
+
+++ Facebook
+menu = Facebook
+title = Facebook
+host = facebook.com
+
+++ GoogleSearch
+menu = Google
+title = google.com
+host = google.com
+
+++ Hulu
+menu = Hulu
+title = hulu.com
+host = hulu.com
+
+++ Reddit
+menu = Reddit
+title = reddit.com
+host = reddit.com
+
+++ Youtube
+menu = YouTube
+title = YouTube
+host = youtube.com
+
++ TNSLAN
+menu = tnslan
+title = lan.thenickstrick.com
+
+++ pfsense
+menu = pfSense
+title = pfsense.lan.thenickstrick.com
+host = 10.1.1.1
+
+++ sw1
+menu = sw1
+title = sw1.lan.thenickstrick.com
+host = 10.1.1.2
+
+++ foyer-ap
+menu = foyer-ap 
+title = foyer-ap.lan.thenickstrick.com
+host = 10.1.1.4
+
+++ hallawy-ap
+menu = hallway-ap
+title = hallway-ap.lan.thenickstrick.com
+host = 10.1.1.5
+
+++ pihole
+menu = pihole
+title = pihole.lan.thenickstrick.com
+host = 10.1.1.9
+
+++ nexus
+menu = nexus
+title = nexus.lan.thenickstrick.com
+host = 10.1.1.10
+
+++ mutagens
+menu = mutagens
+title = mutagens.lan.thenickstrick.com
+host = 10.1.1.11
+
+++ virt1
+menu = virt1
+title = virt1.lan.thenickstrick.com
+host = 10.1.1.101
+
+++ virt2
+menu = virt2
+title = virt2.lan.thenickstrick.com
+host = 10.1.1.102
+
+++ virt3
+menu = virt3
+title = virt3.lan.thenickstrick.com
+host = 10.1.1.103
+
+++ yennefer
+menu = yennefer
+title = yennefer.lan.thenickstrick.com
+host = 10.1.1.250
+
+++ geralt
+menu = geralt
+title = geralt.lan.thenickstrick.com
+host = 10.1.1.251
+
++ DNS
+menu = DNS
+title = DNS
+
+++ Google-DNS1
+menu = Google DNS 1
+title = Google DNS 8.8.8.8
+host = 8.8.8.8
+
+++ Google-DNS2
+menu = Google DNS 2
+title = Google DNS 8.8.4.4
+host = 8.8.4.4
+
+++ Cloudflare-DNS1
+menu = Cloudflare DNS 1
+title = Cloudflare DNS 1.1.1.1
+host = 1.1.1.1
+
+++ Cloudflare-DNS2
+menu = Cloudflare DNS 2
+title = Cloudflare DNS 1.0.0.1
+host = 1.0.0.1
+
+++ Quad9-DNS1
+menu = Quad9 DNS 2
+title = Quad9 DNS 9.9.9.9
+host = 9.9.9.9
+
+++ Quad9-DNS2
+menu = Quad9 DNS 2
+title = Quad9 DNS 142.112.112.112
+host = 142.112.112.112
+
++ DNSProbes
+menu = DNS Probes
+title = DNS Probes
+probe = DNS
+
+++ Google-DNS1
+menu = Google DNS 1
+title = Google DNS 8.8.8.8
+host = 8.8.8.8
+
+++ Google-DNS2
+menu = Google DNS 2
+title = Google DNS 8.8.4.4
+host = 8.8.4.4
+
+++ Cloudflare-DNS1
+menu = Cloudflare DNS 1
+title = Cloudflare DNS 1.1.1.1
+host = 1.1.1.1
+
+++ Cloudflare-DNS2
+menu = Cloudflare DNS 2
+title = Cloudflare DNS 1.0.0.1
+host = 1.0.0.1
+
+++ CloudflareAM-DNS1
+menu = Cloudflare Anti Malware 1
+title = Cloudflare Anti Malware DNS 1.1.1.2
+host = 1.1.1.2
+
+++ CloudflareAM-DNS2
+menu = Cloudflare Anti Malware 2
+title = Cloudflare Anti Malware DNS 1.0.0.2
+host = 1.0.0.2
+
+++ Quad9-DNS1
+menu = Quad9 DNS 1
+title = Quad9 DNS 9.9.9.9
+host = 9.9.9.9
+
+++ Quad9-DNS2
+menu = Quad9 DNS 2
+title = Quad9 DNS 142.112.112.112
+host = 142.112.112.112
