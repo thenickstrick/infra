@@ -97,6 +97,8 @@ title = geralt.lan.thenickstrick.com
 host = 10.1.1.251
 
 + InternalDNS
+menu = Internal DNS
+title = Internal DNS
 
 ++ tnslan-pihole
 menu = tnslan pihole
