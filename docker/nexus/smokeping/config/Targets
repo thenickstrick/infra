@@ -61,11 +61,6 @@ menu = hallway-ap
 title = hallway-ap.lan.thenickstrick.com
 host = 10.1.1.5
 
-++ pihole
-menu = pihole
-title = pihole.lan.thenickstrick.com
-host = 10.1.1.9
-
 ++ nexus
 menu = nexus
 title = nexus.lan.thenickstrick.com
@@ -101,9 +96,26 @@ menu = geralt
 title = geralt.lan.thenickstrick.com
 host = 10.1.1.251
 
-+ DNS
-menu = DNS
-title = DNS
++ InternalDNS
+
+++ tnslan-pihole
+menu = tnslan pihole
+title = pihole.lan.thenickstrick.com
+host = 10.1.1.9
+
+++ tnsgen-pihole
+menu = tnsgen pihole
+title = pihole.tnsgen.lan
+host = 191.168.2.9
+
+++ tnsiot-pihole
+menu = tnsiot pihole
+title = pihole.tnsiot.lan
+host = 192.168.3.9
+
++ ExternalDNS
+menu = External DNS
+title = External DNS
 
 ++ Google-DNS1
 menu = Google DNS 1
@@ -145,9 +157,29 @@ menu = Quad9 DNS 2
 title = Quad9 DNS 149.112.112.112
 host = 149.112.112.112
 
-+ DNSProbes
-menu = DNS Probes
-title = DNS Probes
++ InternalDNSProbes
+menu = Internal DNS Probes
+title = Internal DNS Probes
+probe = DNS
+
+++ tnslan-pihole
+menu = tnslan pihole
+title = pihole.lan.thenickstrick.com
+host = 10.1.1.9
+
+++ tnsgen-pihole
+menu = tnsgen pihole
+title = pihole.tnsgen.lan
+host = 191.168.2.9
+
+++ tnsiot-pihole
+menu = tnsiot pihole
+title = pihole.tnsiot.lan
+host = 192.168.3.9
+
++ ExternalDNSProbes
+menu = External DNS Probes
+title = External DNS Probes
 probe = DNS
 
 ++ Google-DNS1
