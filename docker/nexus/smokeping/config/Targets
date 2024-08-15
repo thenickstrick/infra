@@ -108,7 +108,7 @@ host = 10.1.1.9
 ++ tnsgen-pihole
 menu = tnsgen pihole
 title = pihole.tnsgen.lan
-host = 191.168.2.9
+host = 192.168.2.9
 
 ++ tnsiot-pihole
 menu = tnsiot pihole
@@ -172,7 +172,7 @@ host = 10.1.1.9
 ++ tnsgen-pihole
 menu = tnsgen pihole
 title = pihole.tnsgen.lan
-host = 191.168.2.9
+host = 192.168.2.9
 
 ++ tnsiot-pihole
 menu = tnsiot pihole
