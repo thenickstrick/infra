@@ -1,0 +1,32 @@
+# [pve-hosts]
+# virt1
+# virt2
+# virt3
+# yennefer
+# geralt
+
+# [piholes]
+# pihole
+# tnsgen
+# tnsiot
+
+[d]
+d1
+d2
+d3
+
+[fs]
+fs1
+fs2
+fs3
+
+[k]
+k1
+k2
+k3
+
+[us]
+us1
+us2
+us3
+
