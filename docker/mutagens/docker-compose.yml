@@ -13,9 +13,10 @@ services:
     image: postgres:15
     container_name: postgres
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: dev
+    - POSTGRES_USER=admin
+    - POSTGRES_PASSWORD=password
+    - POSTGRES_DB=dev
+    - TZ=America/Chicago
     volumes:
       - ./postgres:/var/lib/postgresql/data
     ports:
@@ -25,11 +26,12 @@ services:
     image: dpage/pgadmin4
     container_name: pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+    - PGADMIN_DEFAULT_EMAIL=admin@example.com
+    - PGADMIN_DEFAULT_PASSWORD=admin
+    - TZ=America/Chicago
     ports:
       - "8080:80"
     depends_on:
-      - postgresql
+      - postgres
     volumes:
       - ./pgadmin:/var/lib/pgadmin
