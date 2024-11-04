@@ -1,32 +1,28 @@
-# [pve-hosts]
-# virt1
-# virt2
-# virt3
-# yennefer
-# geralt
+[pve]
+virt1
+virt2
+virt3
 
-# [piholes]
-# pihole
-# tnsgen
-# tnsiot
-
+# docker hosts
 [d]
 d1
 d2
 d3
 
-[fs]
+# fedora servers
+[fs] 
 fs1
 fs2
 fs3
 
-[k]
+# k8s hosts
+[k] 
 k1
 k2
 k3
 
+# ubuntu servers
 [us]
 us1
 us2
 us3
-
