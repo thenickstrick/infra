@@ -31,10 +31,12 @@ Include /etc/ssh/sshd_config.d/*.conf
 LogLevel VERBOSE
 
 # Authentication:
-AllowUsers n
+{% if allow_users %}
+AllowUsers {{ allow_users }}
+{% endif %}
 
 #LoginGraceTime 2m
-PermitRootLogin no
+PermitRootLogin {{ permit_root_login }}
 #StrictModes yes
 #MaxAuthTries 6
 #MaxSessions 10
@@ -60,7 +62,7 @@ AuthorizedKeysFile	.ssh/authorized_keys
 
 # To disable tunneled clear text passwords, change to no here!
 KbdInteractiveAuthentication no
-PasswordAuthentication no
+PasswordAuthentication {{ password_authentication }}
 PermitEmptyPasswords no
 
 # Kerberos options
@@ -99,7 +101,7 @@ X11Forwarding yes
 #X11UseLocalhost yes
 #PermitTTY yes
 PrintMotd no
-PrintLastLog yes
+PrintLastLog {{ print_last_log}}
 #TCPKeepAlive yes
 #PermitUserEnvironment no
 #Compression delayed
