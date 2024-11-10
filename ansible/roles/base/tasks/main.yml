@@ -4,6 +4,19 @@
     name: n
     groups: root
 
+- name: add ssh key for n
+  tags: always
+  ansible.builtin.authorized_key:
+    user: n
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILQJiBJ3gKBhu0rtY1gqNLeZqUrl1BzkBdQnaJLJjN/a thenickstrick"
+
+- name: deploy sshd_config template
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    mode: '0600'
+  notify: Restart SSH
+
 - name: add nopasswd sudoers config
   tags: always
   ansible.builtin.copy:
@@ -13,8 +26,9 @@
     group: root
     mode: 0440
 
-- name: add ssh key for n
-  tags: always
-  ansible.builtin.authorized_key:
-    user: n
-    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILQJiBJ3gKBhu0rtY1gqNLeZqUrl1BzkBdQnaJLJjN/a thenickstrick"
+- name: apply sysctl configuration
+  template: 
+    src: sysctl_conf.j2
+    dest: /etc/sysctl.conf
+    mode: '0644'
+  notify: reload sysctl

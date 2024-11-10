@@ -1,5 +1,9 @@
 ---
-- name: Restart SSH
+- name: reload sysctl
+  command: sysctl -p
+
+- name: restart SSH
   service:
     name: sshd
     state: restarted
+    

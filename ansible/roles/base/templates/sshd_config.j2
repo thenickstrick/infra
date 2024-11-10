@@ -1,6 +1,6 @@
-###############################################################################
-########################### Managed by Ansible ################################
-###############################################################################
+################################################################################
+############################ Managed by Ansible ################################
+################################################################################
 
 # This is the sshd server system-wide configuration file.  See
 # sshd_config(5) for more information.
@@ -28,14 +28,14 @@ Include /etc/ssh/sshd_config.d/*.conf
 
 # Logging
 #SyslogFacility AUTH
-LogLevel VERBOSE
+LogLevel {{ log_level }}
 
 # Authentication:
 {% if allow_users %}
 AllowUsers {{ allow_users }}
 {% endif %}
 
-#LoginGraceTime 2m
+LoginGraceTime {{ login_grace_time }}
 PermitRootLogin {{ permit_root_login }}
 #StrictModes yes
 #MaxAuthTries 6

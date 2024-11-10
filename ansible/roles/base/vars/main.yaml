@@ -1,5 +1,7 @@
 ---
 allow_users: "n"
+log_level: "DEBUG"
+login_grace_time: "10s"
 password_authentication: "no"
 permit_root_login: "no"
 print_last_log: "yes"
