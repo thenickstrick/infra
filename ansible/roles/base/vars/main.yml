@@ -1,10 +1,8 @@
 ---
 allow_users: "n"
 log_level: "DEBUG"
-login_grace_time: "10s"
+login_grace_time: "15s"
 password_authentication: "no"
 permit_root_login: "no"
 print_last_log: "yes"
 X11_forwarding: "yes"
-
-
