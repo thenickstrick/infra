@@ -2,22 +2,19 @@
 - hosts: all
   become: true
   tasks:
-    - name: Set package manager and update options based on OS
-      set_fact:
-        package_manager: "{{ 'ansible.builtin.apt' if ansible_distribution in ['Debian', 'Ubuntu'] else 'ansible.builtin.dnf' }}"
-        update_params: >
-          {{
-            {'upgrade': 'dist', 'update_cache': True} 
-            if ansible_distribution in ['Debian', 'Ubuntu'] 
-            else {'update_only': True, 'update_cache': True}
-          }}
-
-    - name: Install updates
+    - name: Install updates on Debian/Ubuntu
+      ansible.builtin.apt:
+        upgrade: dist
+        update_cache: yes
+      when: ansible_distribution in ['Debian', 'Ubuntu']
       tags: always
-      ansible.builtin.include_role:
-        name: "{{ package_manager }}"
-      with_items:
-        - "{{ update_params }}"
+
+    - name: Install updates on Fedora
+      ansible.builtin.dnf:
+        update_only: yes
+        update_cache: yes
+      when: ansible_distribution == "Fedora"
+      tags: always
 
 # - hosts: all
 #   become: true
