@@ -2,7 +2,7 @@
   tags: always
   ansible.builtin.user:
     name: n
-    groups: "{{ 'root' if ansible_os_faimily != 'Debian' else 'sudo' }}"
+    groups: "{{ 'root' if ansible_os_family != 'Debian' else 'sudo' }}"
 
 - name: add ssh key for n
   tags: always
