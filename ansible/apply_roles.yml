@@ -1,0 +1,5 @@
+- name: apply base role to all hosts
+  hosts: all
+  become: true
+  roles:
+    - base
