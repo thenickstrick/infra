@@ -32,3 +32,20 @@
     dest: /etc/sysctl.conf
     mode: '0644'
   notify: reload sysctl
+
+- name: install base utilities
+  package:
+    name:
+      - btop
+      - ca-certificates
+      - curl
+      - git
+      - gpg
+      - htop
+      - jq
+      - net-tools
+      - rsync
+      - vim
+      - wget
+    state: present
+    update_cache: yes

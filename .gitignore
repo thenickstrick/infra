@@ -26,16 +26,16 @@ Temporary Items
 **/.ssh/known_hosts
 
 ### Terraform ###
-./*/**/.terraform/*
-./*/*.tfstate
-./*.tfstate.*
-./*/crash.log
-./*/crash.*.log
-./*/*.tfvars
-./*/*.tfvars.json
-./*/override.tf
-./*/override.tf.json
-./*/*_override.tf
-./*/*_override.tf.json
-./*/.terraformrc
-./*/terraform.rc
+./tf-gcp/**/.terraform/*
+./tf-gcp/*.tfstate
+./tf-gcp/*.tfstate.*
+./tf-gcp/crash.log
+./tf-gcp/crash.*.log
+./tf-gcp/*.tfvars
+./tf-gcp/*.tfvars.json
+./tf-gcp/override.tf
+./tf-gcp/override.tf.json
+./tf-gcp/*_override.tf
+./tf-gcp/*_override.tf.json
+./tf-gcp/.terraformrc
+./tf-gcp/terraform.rc

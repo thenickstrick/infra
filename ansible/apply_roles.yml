@@ -3,3 +3,15 @@
   become: true
   roles:
     - base
+
+- name: setup docker role on docker hosts
+  hosts: d
+  become: true
+  roles:
+    - docker
+
+- name: setup kubernetes role on k8s hosts
+  hosts: k
+  become: true
+  roles:
+    - kubernetes

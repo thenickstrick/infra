@@ -1,0 +1,39 @@
+- name: add kubernetes signing key
+  ansible.builtin.shell: |
+    curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+  args:
+    creates: /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+  when: ansible_os_family == 'Debian'
+
+- name: add kubernetes apt repository
+  ansible.builtin.shell: |
+    echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+  args:
+    creates: /etc/apt/sources.list.d/kubernetes.list
+  when: ansible_os_family == 'Debian'
+
+- name: udpate apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+  when: ansible_os_family == 'Debian'
+
+- name: install kubernetes packages
+  ansible.builtin.apt:
+    name:
+      - kubelet
+      - kubeadm
+      - kubectl
+    state: present
+    update_cache: yes
+  when: ansible_os_family == 'Debian'
+
+- name: hold kubernetes packages at current version
+  ansible.builtin.shell: |
+    sudo apt-mark hold kubelet kubeadm kubectl
+  when: ansible_os_family == 'Debian'
+
+# it's possible this may not be necessary to check/configure since all of these systems init are systemd
+# but since there are warnings about cgroup driver selection, it's possible that extra configuration is necessary
+# setting a reminder to check this later: 
+# https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cgroup-drivers
+# https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd-systemd
