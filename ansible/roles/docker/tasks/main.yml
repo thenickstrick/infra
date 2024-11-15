@@ -6,11 +6,12 @@
   when: ansible_os_family == 'Debian'
 
 - name: add dockers apt repository
-  ansible.builtin.copy: 
-      dest: /etc/apt/sources.list.d/docker.list
-      content: |
-        deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
-        $(. /etc/os-release && echo "$VERSION_CODENAME") stable" 
+  ansible.builtin.shell: 
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  args:
+    creates: /etc/apt/sources.list.d/docker.list
   when: ansible_os_family == 'Debian'
 
 - name: udpate apt cache
