@@ -9,7 +9,7 @@
   ansible.builtin.copy: 
     dest: /etc/apt/sources.list.d/docker.list
     content: |
-      deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian {{ ansible_lsb.codename }} stable
+      deb [arch={{ ansible_architecture | lower }} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian {{ ansible_lsb.codename }} stable
   when: ansible_os_family == 'Debian'
 
 - name: udpate apt cache
