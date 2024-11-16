@@ -2,16 +2,19 @@
   hosts: all
   become: true
   roles:
-    - base
+    - role: base
+      tags: base
 
 - name: setup docker role on docker hosts
   hosts: d
   become: true
   roles:
-    - docker
+    - role: docker
+      tags: docker
 
 - name: setup kubernetes role on k8s hosts
   hosts: k
   become: true
   roles:
-    - kubernetes
+    - role: kubernetes
+      tags: kubernetes
