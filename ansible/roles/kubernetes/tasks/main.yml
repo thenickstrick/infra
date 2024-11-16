@@ -1,4 +1,5 @@
 - name: add kubernetes signing key
+  tags: kubernetes
   ansible.builtin.shell: |
     curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
   args:
@@ -6,6 +7,7 @@
   when: ansible_os_family == 'Debian'
 
 - name: add kubernetes apt repository
+  tags: kubernetes
   ansible.builtin.shell: |
     echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
   args:
@@ -13,11 +15,13 @@
   when: ansible_os_family == 'Debian'
 
 - name: udpate apt cache
+  tags: kubernetes
   ansible.builtin.apt:
     update_cache: yes
   when: ansible_os_family == 'Debian'
 
 - name: install kubernetes packages
+  tags: kubernetes
   ansible.builtin.apt:
     name:
       - kubelet
@@ -28,6 +32,7 @@
   when: ansible_os_family == 'Debian'
 
 - name: hold kubernetes packages at current version
+  tags: kubernetes
   ansible.builtin.shell: |
     sudo apt-mark hold kubelet kubeadm kubectl
   when: ansible_os_family == 'Debian'

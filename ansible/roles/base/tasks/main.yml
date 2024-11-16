@@ -1,16 +1,18 @@
 - name: create user n
-  tags: always
+  tags: base
   ansible.builtin.user:
     name: n
     groups: "{{ 'root' if ansible_os_family != 'Debian' else 'sudo' }}"
+    append: yes
 
 - name: add ssh key for n
-  tags: always
+  tags: base
   ansible.builtin.authorized_key:
     user: n
     key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILQJiBJ3gKBhu0rtY1gqNLeZqUrl1BzkBdQnaJLJjN/a thenickstrick"
 
 - name: deploy sshd_config template
+  tags: base
   template:
     src: sshd_config.j2
     dest: /etc/ssh/sshd_config
@@ -18,7 +20,7 @@
   notify: restart ssh
 
 - name: add nopasswd sudoers config
-  tags: always
+  tags: base
   ansible.builtin.copy:
     src: nopasswd
     dest: /etc/sudoers.d/nopasswd
@@ -27,6 +29,7 @@
     mode: 0440
 
 - name: apply sysctl configuration
+  tags: base
   template: 
     src: sysctl_conf.j2
     dest: /etc/sysctl.conf
@@ -34,6 +37,7 @@
   notify: reload sysctl
 
 - name: install base utilities
+  tags: base
   package:
     name:
       - btop
