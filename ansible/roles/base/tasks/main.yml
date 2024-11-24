@@ -47,6 +47,7 @@
       - gpg
       - htop
       - jq
+      - neovim
       - net-tools
       - rsync
       - vim
